@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio — To-Do List</title>
+<style>
+  :root {
+    --bg: #0F172A;
+    --panel: #121826;
+    --text: #E0E0E0;
+    --text-strong: #FFFFFF;
+    --electric: #00D4FF;
+    --electric-dim: rgba(0,212,255,0.25);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif;
+    min-height: 100vh; overflow-x: hidden;
+  }
+
+  /* Hero */
+  header {
+    position: fixed; top: 24px; left: 50%; transform: translateX(-50%);
+    display: flex; gap: 24px; align-items: center; z-index: 10;
+  }
+  .logo { color: var(--electric); font-weight: 800; font-size: 2rem; letter-spacing: 1px; }
+  .nav-link { color: var(--text); text-decoration: none; font-size: 0.95rem; margin-left: 20px; opacity: 0.7; transition: .25s; }
+  .nav-link:hover { color: var(--electric); }
+
+  .hero {
+    padding: 140px 40px 100px; text-align: center; max-width: 800px; margin: 0 auto;
+  }
+  .hero h1 {
+    font-size: 4.5rem; line-height: 1.1; color: var(--text-strong); margin-bottom: 16px;
+    letter-spacing: 2px; text-transform: uppercase;
+  }
+  .hero p { color: #9AA3B3; font-size: 1.15rem; max-width: 520px; margin-bottom: 32px; line-height: 1.55; }
+  .btn {
+    display: inline-block; padding: 14px 28px; border: 1px solid var(--electric); color: var(--electric);
+    text-decoration: none; border-radius: 6px; font-weight: 600; transition: .25s;
+    box-shadow: 0 0 20px var(--electric-dim);
+  }
+  .btn:hover {
+    background: var(--electric); color: #0F172A; box-shadow: 0 0 30px var(--electric);
+  }
+
+  /* Sections */
+  section { padding: 100px 40px; }
+  h2 { text-align: center; font-size: 2.5rem; color: var(--text-strong); margin-bottom: 40px; letter-spacing: 1px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px; max-width: 1200px; margin: 0 auto; }
+
+  .card {
+    background: var(--panel); border: 1px solid var(--electric-dim); border-radius: 10px;
+    padding: 32px; transition: .25s; position: relative;
+  }
+  .card:hover { border-color: var(--electric); box-shadow: 0 12px 30px rgba(0,212,255,0.12); }
+
+  .card-title { color: var(--electric); font-size: 1.35rem; margin-bottom: 12px; }
+  .card-desc { color: #9AA3B3; font-size: 1rem; line-height: 1.6; margin-top: 8px; }
+
+  /* To-Do project */
+  .todo-demo {
+    display: flex; gap: 40px; align-items: start; margin-top: 24px;
+  }
+  .mock-screen {
+    background: var(--panel); border: 1px solid var(--electric-dim); border-radius: 8px;
+    padding: 24px; width: 100%; max-width: 480px; height: 320px;
+    display: flex; flex-direction: column; gap: 16px;
+  }
+  .mock-header { display: flex; justify-content: space-between; align-items: center; font-size: 0.9rem; color: #9AA3B3; }
+  .task-list { list-style: none; }
+  .task-item { display: flex; align-items: center; gap: 12px; padding: 12px; border-radius: 8px; margin-bottom: 10px; border: 1px solid var(--panel); }
+  .task-item.done { border-color: #4ade80; color: #4ade80; opacity: 0.8; text-decoration: line-through; }
+  .task-item input { width: 18px; height: 18px; accent-color: var(--electric); cursor: pointer; border: none; border-radius: 4px; }
+  .task-item span { flex: 1; font-size: 1.05rem; }
+  .add-box { display: flex; gap: 10px; margin-top: 16px; }
+  .add-box input { flex: 1; padding: 10px; border: 1px solid var(--panel); border-radius: 6px; background: var(--panel); color: #9AA3B3; }
+  .add-box button { padding: 10px 16px; border: none; background: var(--electric); color: #0F172A; border-radius: 6px; cursor: pointer; font-weight: 600; }
+
+  .features { color: #9AA3B3; font-size: 1rem; line-height: 1.6; margin-top: 20px; }
+  .features li { margin-bottom: 8px; }
+
+  footer { text-align: center; padding: 40px 40px; color: #6B748A; font-size: 0.85rem; }
+
+  @media (max-width: 768px) {
+    .hero h1 { font-size: 2.8rem; }
+    header { position: relative; top: 0; left: 0; padding: 16px; flex-direction: column; gap: 12px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">TO • DO</div>
+  <a href="#project" class="nav-link">Projects</a>
+  <a href="#contact" class="nav-link">Contact</a>
+</header>
+
+<section class="hero">
+  <h1>Anisiforov Anton</h1>
+  <p>Frontend · UI · Minimalist Apps</p>
+  <p>Я собираю рабочие интерфейсы без лишнего.
+
+Frontend-разработчик. Фокус: простые приложения, чистый код, доступность.
+
+«Здесь нет декоративных анимаций. Есть задача, есть решение, есть живое демо.»  </p>
+  <a href="#project" class="btn">Открыть проект →</a>
+</section>
+
+<section id="project">
+  <h2>To-Do List</h2>
+  <div class="grid">
+    <div class="card">
+      <div class="card-title">Минималистичный интерфейс</div>
+      <div class="card-desc">Без лишнего. Чистый список, локальное хранилище, тёмная тема. Никаких ярких фонов — только задача и кнопка.</div>
+      <div class="todo-demo">
+        <div class="mock-screen">
+          <div class="mock-header">To-Do List — Local</div>
+          <ul class="task-list">
+            <li class="task-item"><input type="checkbox"><span>Написать структуру портфолио</span></li>
+            <li class="task-item done"><input type="checkbox" checked><span>Настроить цветовую систему</span></li>
+            <li class="task-item"><input type="checkbox"><span>Добавить эффект свечения при hover</span></li>
+          </ul>
+          <div class="add-box"><input type="text" placeholder="Новая задача..."><button>+</button></div>
+        </div>
+      </div>
+      <ul class="features">
+        <li>Локальное хранение (`localStorage`), без сервера.</li>
+        <li>Цветовая система: дымчато-чёрный (`#0F172A`) + electric blue (`#00D4FF`).</li>
+        <li>Адаптивная сетка, мягкие переходы, чистый контраст (не `#000` + `#FFF`).</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title">Почему эта гамма</div>
+      <div class="card-desc">Тёмный фон снижает яркость и создаёт «атмосферу». Чистый electric blue используется точечно: кнопка, активное состояние, граница. Это даёт эффект «трудно отвести взгляд», не создавая визуального шума.</div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <h2>Contact</h2>
+  <div class="grid">
+    <div class="card">
+      <p style="text-align:center; color:#9AA3B3; margin-top:20px;">anisoforovanton@gmail.com</p>
+    </div>
+    <div class="card">
+      <p style="text-align:center; color:#9AA3B3; margin-top:20px;">Telegram:@AntonANI2 </p>
+    </div>
+  </div>
+</section>
+
+<footer>© 2026. Portfolio — To-Do List.</footer>
+
+<script>
+  // Простая демонстрация
+  const list = document.querySelector('.task-list');
+  const inp = document.querySelector('.add-box input');
+  const btn = document.querySelector('.add-box button');
+  btn.addEventListener('click', () => {
+    const val = inp.value.trim();
+    if(val) {
+      const li = document.createElement('li');
+      li.className = 'task-item';
+      li.innerHTML = `<input type="checkbox"><span>${val}</span>`;
+      list.insertBefore(li, list.children[0]);
+      inp.value = '';
+    }
+  });
+</script>
+</body>
+</html>
